@@ -6,16 +6,17 @@ include ("./includes/top.php");
 $error_get = '';
 
 if (!isset($_GET['parameter']) || empty($_GET['parameter'])){
-$error_get = 'Incorrect parameter, please try again. ';
+    $error_get = 'Incorrect parameter, please try again. ';
 }
 
 $decoded = base64_decode($_GET['parameter']);
 $parameters = unserialize($decoded);
 
-$product_id = $parameters['2'];
 $product_name = $parameters['0'];
-$product_description = $parameters['3'];
 $img = $parameters['1'];
+$product_id = $parameters['2'];
+$product_description = $parameters['3'];
+$product_price = $parameters['4'];
 
 if (isset($_POST['action']) && ($_POST['action'] == 'update')){
 $error_post = '';
@@ -31,9 +32,9 @@ $headers .= "MIME-Version: 1.0\r\n";
 $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 $headers .= 'Bcc: ilnitchi@gmail.com';
 $message = '<html><body>';
-$message .= 'New order for the customer ' . $_POST['customer_name'] . "<br /><br /><\n";
-$message .= 'Product: ' . $product_name . ' (article id: ' . $product_id . ') ' . "<br /><br />\n";
-$message .= 'Product description: <br /><br />' . $product_description . "<br /><br />\n";
+$message .= 'New order for the customer <strong>' . $_POST['customer_name'] . "</strong><br /><br />\n";
+$message .= '<strong>Product</strong>: <br />' . $product_name . ' (article id: ' . $product_id . ') ' . "<br /><br />\n";
+$message .= '<strong>Product description</strong>: <br />' . $product_description . "<br /><br />\n";
 
 if (!mail($to , $subject, $message, $headers)){
     $error_post .= 'Error sending the customer the confirmation email.';
@@ -94,12 +95,12 @@ else{
               <div class="mb-2 text-muted">Product Nr: <?php echo $product_id; ?></div>
               <p class="card-text mb-auto"><?php echo $product_description; ?></p>
             </div>
-            <img class="card-img-right flex-auto d-none d-md-block" src="holder.js/200x250?theme=thumb" alt="Card image cap">
+            <img class="card-img-right flex-auto d-none d-md-block" src="./images/<?php echo $img; ?>" src="holder.js/200x250?theme=thumb" alt="Card image cap">
           </div>
 </div>
 
 <h2 class="mb-2">To finalize your order, please fill in the following form:</h2>
-    <form action="<?php echo $_SERVER['PHP_SELF']?>?product_id=<?php echo $_GET['parameter']; ?>" method="POST" name="order">
+    <form action="<?php echo $_SERVER['PHP_SELF']?>?parameter=<?php echo $_GET['parameter']; ?>" method="POST" name="order">
         <div class="row">
             <div class="col-md-6 mb-3">
                     <label for="Name">Name</label>
