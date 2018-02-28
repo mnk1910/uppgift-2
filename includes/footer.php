@@ -19,3 +19,7 @@
     <script src="./scripts/holder.min.js" crossorigin="anonymous"></script>
   </body>
 </html>
+
+<?php
+mysqli_close($connection);
+?>

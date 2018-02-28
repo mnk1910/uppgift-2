@@ -1,3 +1,8 @@
+<?php
+include("./includes/connection.php");
+$http_referer = "http://localhost/UPPGIFT-2/";
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -14,9 +19,4 @@
   </head>
   <body class="container">
     <h1><?php echo $title; ?></h1>
-
-    <div class="phones-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-      <h1 class="display-4">Electronics</h1>
-      <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed turpis tincidunt id aliquet risus. A condimentum vitae sapien pellentesque habitant morbi. Volutpat lacus laoreet non curabitur gravida arcu ac tortor dignissim. Nibh venenatis cras sed felis.</p>
-    </div>
 

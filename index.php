@@ -1,35 +1,47 @@
 <?php
 
 $title = "Welcome to ACME web shop";
-include ("./includes/top.php");
+include ("./includes/header.php");
 
-$products = [
-    ["Sony headphones", "img1.jpg", "zO3so33OVnaSSvmh", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", "1 000"],
-    ["Laptop", "img2.jpg", "6cKJEvIHIX1QGUUX", "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "15 000"],
-    ["Earpods", "img3.jpg", "KagUNayWpim9tJdF", "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.", "150"],
-];
+?>
+
+<div class="phones-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+  <h1 class="display-4">Electronics</h1>
+  <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed turpis tincidunt id aliquet risus. A condimentum vitae sapien pellentesque habitant morbi. Volutpat lacus laoreet non curabitur gravida arcu ac tortor dignissim. Nibh venenatis cras sed felis.</p>
+</div>
+
+<?php
+// get the data from the database
+// first create the query
+$query_products = "SELECT * FROM products";
+// and then execute it
+$sql_products = mysqli_query($connection, $query_products);
 
 echo '<div class="row">' . "\n";
 
-foreach($products as $product){
+// ia un array la fiecare iteratie
+while($result_products = mysqli_fetch_assoc($sql_products)){
 
-  $parameter = base64_encode(serialize($product));
-  echo '<div class="col-sm-4"><!-- Starta en kolumn -->' . "\n";
+  // echo "<pre>";
+  // print_r($result_products);
+  // echo "</pre>";
+
+  $parameter = base64_encode(serialize($result_products));
+  echo '<div class="col-sm-4"><!-- Start a column -->' . "\n";
   echo '  <div class="card">' . "\n";
-  echo '    <img class="card-img-top" src="./images/' . $product[1] . '" alt="' . $product[0] . '">' . "\n";
+  echo '    <img class="card-img-top" src="./images/' . $result_products["image"] . '" alt="' . $result_products["name"] . '">' . "\n";
   echo '    <div class="card-body">' . "\n";
-  echo '      <h3 class="card-title">' . $product[0] . '</h5>' . "\n";
-  echo '      <h5 class="card-title pricing-card-title">' . $product[4] . '<small class="text-muted"> kr</small></h1>' . "\n";
-  echo '      <p class="card-text">' . $product[3] . '.</p>' . "\n";
+  echo '      <h3 class="card-title">' . $result_products["name"] . '</h5>' . "\n";
+  echo '      <h5 class="card-title pricing-card-title">' . $result_products["price"] . '<small class="text-muted"> kr</small></h1>' . "\n";
+  echo '      <p class="card-text">' . $result_products["description"] . '.</p>' . "\n";
   echo '      <a href="order.php?parameter=' . $parameter . '" class="btn btn-primary">Order</a>' . "\n";
   echo '    </div>' . "\n";
   echo '  </div>' . "\n";
-  echo '</div><!-- avsluta en kolumn -->' . "\n";
+  echo '</div><!-- end a column -->' . "\n";
 
-
-} // avsluta foreach
+} // end while
 
 echo '</div> <!-- row -->' . "\n";
 
-include ("./includes/bottom.php");
+include ("./includes/footer.php");
 ?>
