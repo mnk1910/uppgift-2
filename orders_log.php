@@ -3,26 +3,24 @@
 $title = "Orders log";
 include ("./includes/header.php");
 
-// Databasuppkoppling
+// Establish a connection to the database
 // Already done in header.php
 
-//Skapa en SQL-sats
+//Create an SQL-query
 $query = "SELECT o.*, p.name AS product_name, p.price AS product_price
 FROM  order_log AS o, products AS p
 WHERE o.product_id = p.product_id
 ORDER BY o.order_id";
-// AND   f.filmID = u.Film
-// AND   u.inDatum IS NULL
-// ORDER BY u.utDatum";
 
-// Kör SQL-satsen
+// Execute the SQL-query
 $table = mysqli_query($connection , $query)
           or die (mysqli_error($connection));
 
-// Visa en HTML-tabell
+// Show an HTML-table
 ?>
 
-<div>Customer data and orders history</div>
+<div class="phones-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h2>Customer data and orders history</h2>
 
 <table class="table">
 <tr>
@@ -58,7 +56,9 @@ $table = mysqli_query($connection , $query)
 } ?>
 
 </table>
+</div>
 
 <?php
-mysqli_close($connection);
+// Close the MySQL connection - done in footer.php
+include ("./includes/footer.php");
 ?>
