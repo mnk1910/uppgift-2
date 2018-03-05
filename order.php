@@ -13,7 +13,7 @@ if (!isset($_GET['parameter']) || empty($_GET['parameter'])){
 // Display all php server variables available with their values
 // print_r ($_SERVER);
 // Check if the page was accessed directly or was invoked by index.php as requested
-if (!isset($_SERVER['HTTP_REFERER']) || $_SERVER['HTTP_REFERER'] != $http_referer){
+if (!isset($_SERVER['HTTP_REFERER']) || empty($_SERVER['HTTP_REFERER'])){
     $error_get .= 'You can not load this page directly. ';
 }
 
@@ -51,7 +51,7 @@ if ($error_post){
           </h3>
           <div class="container">
               <p class="float-left">
-              <a href="<?=$http_referer?>" class="btn btn-outline-success">Go to the index page.</a>
+              <a href="./index.php" class="btn btn-outline-success">Go to the index page.</a>
               </p>
           </div>
           <?php
@@ -130,8 +130,11 @@ else{
             <img class="card-img-right flex-auto d-none d-md-block" src="./images/<?=$img ?>" src="holder.js/200x250?theme=thumb" alt="Card image cap">
           </div>
 </div>
+<?php
+// $_SERVER['PHP_SELF'] - current opened file
+?>
 <h2 class="mb-2">To finalize your order, please fill in the following form:</h2>
-    <form action="order.php?parameter=<?=$_GET['parameter'] ?>" method="POST" name="order">
+    <form action="<?=$_SERVER['PHP_SELF'] ?>?parameter=<?=$_GET['parameter'] ?>" method="POST" name="order">
         <div class="row">
             <div class="col-md-6 mb-3">
                     <label for="Name">Name</label>

@@ -1,6 +1,5 @@
 <?php
 include("./includes/connection.php");
-$http_referer = "http://localhost/UPPGIFT-2/";
 ?>
 
 <!doctype html>
