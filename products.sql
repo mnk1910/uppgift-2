@@ -33,12 +33,12 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`product_id`, `name`, `description`, `image`, `price`) VALUES
-(1, 'Sony headphones', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, sequi.', 'product001.jpg', 1000),
-(2, 'Laptop', 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'product002.jpg', 15000),
-(5, 'Earpods', 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.', 'product003.jpg', 150),
-(7, 'denumire1', 'bla blalivnhiervn lcknhoiwaei wunhtwintiu 934573285v', 'product004.jpg', 500),
-(8, 'denumire2', 'erlcuenrsuvbserkytveksy jfgcnskuycgn', 'product005.jpg', 3200),
-(9, 'denumire3', 'recmtw4p89c5m2984p pieugr jdgv 498 vpirbf', 'product006.jpg', 1450);
+(1, 'Headphones', 'Probably the most affordable headphones. Amazing design combined with the best sound, this makes them the best headphones on the market. Only on Acme!', 'product001.jpg', 1000),
+(2, 'Laptop', 'This laptop is one of the best there is, we offer you a one-of-a-kind deal, exclusively on Acme.', 'product002.jpg', 15000),
+(5, 'Earpods', 'Join the earpod team if you haven\'t already. You will not regret it!', 'product003.jpg', 150),
+(7, 'Smartwatch', 'With a smartwatch you will be able to take your calls, read and answer your texts, have an eye on your time and all your social media, all of this without even taking your phone out of your pocket! What are you waiting for?', 'product004.jpg', 500),
+(8, 'Portable Speaker', 'With this portable speaker you carry perfect sound with you, everywhere you go!', 'product005.jpg', 3200),
+(9, 'Wireless Keyboard', 'Tired of writing on your iPad? Buy this smart, tiny keyboard and suddenly your iPad feels like a \'real\' computer!', 'product006.jpg', 1450);
 
 --
 -- Indexes for dumped tables
