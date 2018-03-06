@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Feb 26, 2018 at 08:25 PM
+-- Generation Time: Mar 06, 2018 at 07:57 PM
 -- Server version: 5.6.38
 -- PHP Version: 7.2.1
 
@@ -29,6 +29,23 @@ CREATE TABLE `order_log` (
   `customer_address` varchar(45) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `order_log`
+--
+
+INSERT INTO `order_log` (`order_id`, `product_id`, `customer_name`, `customer_mail`, `customer_phone`, `customer_address`) VALUES
+(1, 1, 'Mon Iln', 'asdf@fdsa.com', '0760987654', 'Qwerty 1, 56789 Buc'),
+(2, 2, 'Mahmud Al Hakim', 'ceva@ceva.com', '1234567890', 'qwerty 1, 56789 Buc'),
+(3, 9, 'Mon Iln', 'asdf@fdsa.com', '0760987654', 'Qwerty 1, 56789 Buc'),
+(4, 7, 'Mon Iln', 'asdf@fdsa.com', '0987654321', 'qwerty 1, 56789 Buc'),
+(5, 2, 'Mon Iln', 'asdf@fdsa.com', '0760987654', 'Qwerty 1, 56789 Buc'),
+(6, 1, 'Miruna', 'ceva@ceva.com', '111133330', 'Altceva'),
+(7, 9, 'Jonas E', 'jonas@jonas.com', '1234567899', 'Tomtebobavägen 3A'),
+(8, 8, 'Vicky E', 'vicky@jonas.com', '09876543a', 'Tomtebobavägen 3B'),
+(9, 7, 'Cornelia', 'cornelia@cornelia.se', '087654321', 'Tomtebobavägen 3C'),
+(12, 9, 'Zxcv Bnm', 'lkjhg@lkjhg.com', '089765432234', 'Tomtebobavägen 3D'),
+(13, 9, 'Cristina Tudor', 'cristina@cristina.se', '08080808080', 'Tomtebodavägen 3');
+
 -- --------------------------------------------------------
 
 --
@@ -48,12 +65,12 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`product_id`, `name`, `description`, `image`, `price`) VALUES
-(1, 'Sony headphones', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, sequi.', 'product001.jpg', 1000),
-(2, 'Laptop', 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'product002.jpg', 15000),
-(5, 'Earpods', 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.', 'product003.jpg', 150),
-(7, 'denumire1', 'bla blalivnhiervn lcknhoiwaei wunhtwintiu 934573285v', 'product004.jpg', 500),
-(8, 'denumire2', 'erlcuenrsuvbserkytveksy jfgcnskuycgn', 'product005.jpg', 3200),
-(9, 'denumire3', 'recmtw4p89c5m2984p pieugr jdgv 498 vpirbf', 'product006.jpg', 1450);
+(1, 'Headphones', 'Probably the most affordable headphones. Amazing design combined with the best sound, this makes them the best headphones on the market. Only on Acme!', 'product001.jpg', 1000),
+(2, 'Laptop', 'This laptop is one of the best there is, we offer you a one-of-a-kind deal, exclusively on Acme.', 'product002.jpg', 15000),
+(5, 'Earpods', 'Join the earpod team if you haven\'t already. You will not regret it!', 'product003.jpg', 500),
+(7, 'Smartwatch', 'With a smartwatch you will be able to take your calls, read and answer your texts, have an eye on your time and all your social media, all of this without even taking your phone out of your pocket! What are you waiting for?', 'product004.jpg', 1500),
+(8, 'Portable Speaker', 'With this portable speaker you carry perfect sound with you, everywhere you go!', 'product005.jpg', 1000),
+(9, 'Wireless Keyboard', 'Tired of writing on your iPad? Buy this smart, tiny keyboard and suddenly your iPad feels like a \"real\" computer!', 'product006.jpg', 800);
 
 --
 -- Indexes for dumped tables
@@ -80,7 +97,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `order_log`
 --
 ALTER TABLE `order_log`
-  MODIFY `order_id` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `order_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `products`
@@ -97,3 +114,4 @@ ALTER TABLE `products`
 --
 ALTER TABLE `order_log`
   ADD CONSTRAINT `product_id` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
