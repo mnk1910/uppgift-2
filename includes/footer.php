@@ -1,6 +1,3 @@
-
-
-
     <hr class="mb-4">
     <footer class="text-muted">
       <div class="container">
@@ -17,8 +14,6 @@
     <script src="./scripts/popper.min.js" crossorigin="anonymous"></script>
     <script src="./scripts/bootstrap.min.js" crossorigin="anonymous"></script>
     <script src="./scripts/holder.min.js" crossorigin="anonymous"></script>
-    <!-- Custom scripts for this template -->
-    <script src="./scripts/clean-blog.min.js"></script>
   </body>
 </html>
 

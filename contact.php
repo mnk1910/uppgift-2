@@ -9,7 +9,7 @@ include ("./includes/header.php");
         <div class="row">
           <div class="col-lg-8 mx-auto">
             <h2>Get in touch with us!</h2>
-            <p>Feel free to leave us a comment or to give some feedback about our website.
+            <p>Feel free to leave us a comment or to give some feedback about our website.<br>
                Even better, tell us how your experince with us felt!</p>
             <ul class="list-inline banner-social-buttons">
               <li class="list-inline-item">

@@ -1,4 +1,6 @@
-
+body {
+  padding-top: 54px;
+}
 
 #mainNav {
   position: absolute;

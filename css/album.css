@@ -27,6 +27,10 @@
   max-width: 40rem;
 }
 
+body {
+  padding-top: 54px;
+}
+
 footer {
   padding-top: 3rem;
   padding-bottom: 3rem;
