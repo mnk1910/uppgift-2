@@ -33,6 +33,8 @@ while($products = mysqli_fetch_assoc($sql_products)){
   // in order to pass all the elements to the order.php page (via GET) in a safe and secure way
   // (only one parameter instead of all the array's elements, such as 'image', 'name', 'description', 'price').
   // For example avoid the problems caused by non-html compliant characters (spaces, tabs, diacritics) in the URL
+  // http://php.net/manual/en/function.serialize.php
+  // http://php.net/manual/en/function.base64-encode.php
   $parameter = base64_encode(serialize($products));
   echo '<div class="col-sm-4"><!-- Start a column -->' . "\n";
   echo '  <div class="card">' . "\n";

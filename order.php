@@ -44,16 +44,16 @@ if ($error_post){
 ?>
 
 <div class="jumbotron p-3 p-md-5 rounded">
-      <div class="card flex-md-row mb-4 h-md">
+    <div class="card flex-md-row mb-4 h-md">
         <div class="card-body d-flex flex-column">
-          <h3 class="mb-0">
+          <h3 class="mb-0 text-center">
             <div class="alert alert-success" role="alert">Your order has been successfully placed!</div>
           </h3>
-          <div class="container">
-              <p class="float-left">
+          <!-- <div class="container">
+              <p class="float-center">
               <a href="./index.php" class="btn btn-outline-success">Go to the index page.</a>
               </p>
-          </div>
+          </div> -->
           <?php
           // use the available data (GET and POST) and insert it into the database
           // note: $_GET is serialized and encoded.
@@ -65,7 +65,10 @@ if ($error_post){
           // and convert the resulted string back to an array
           $parameters = unserialize($decoded);
 
+          // Get the values from the newly decoded array
           $product_id = $parameters['product_id'];
+          $product_name = $parameters['name'];
+          $product_price = $parameters['price'];
 
           // Log the order details into order_log MySQL table as requested for VG
           $query_order_log = "INSERT INTO order_log SET product_id='" . $product_id . "', customer_name='" . $_POST['customer_name'] . "', customer_mail='" . $_POST['customer_mail'] . "', customer_phone='" . $_POST['customer_phone'] . "', customer_address='" . $_POST['customer_address'] . "'";
@@ -74,8 +77,44 @@ if ($error_post){
           $sql_order_log = mysqli_query($connection, $query_order_log);
           ?>
         </div>
-      </div>
+    </div>
 </div>
+<div class="card-body d-flex flex-column">
+    <h5 class="mb-0 text-center">
+            <div class="text-secondary">
+                <table class="table table-bordered">
+                    <thead><tr>
+                        <th scope="col">Product No.</th>
+                        <th scope="col">Product name</th>
+                        <th scope="col">Price</th>
+                    </tr></thead>
+                    <tbody><tr>
+                        <td><?php echo $product_id ?></td>
+                        <td><?php echo $product_name ?></td>
+                        <td><?php echo $product_price ?></td>
+                    </tr></tbody>
+                </table>
+            </div>
+    </h5>
+</div>
+<!-- <hr class="mb-4"> -->
+<div class="row">
+    <div class="col-sm-6 text-secondary text-center">
+        <ul class="list-unstyled"><strong>Delivery address:</strong>
+            <li><?php echo $_POST['customer_name'] ?></li>
+            <li><?php echo $_POST['customer_address'] ?></li>
+        </ul>
+    </div>
+    <div class="col-sm-6 text-secondary text-center">
+        <ul class="list-unstyled"><strong>Contact details:</strong>
+            <li><?php echo $_POST['customer_mail'] ?></li>
+            <li><?php echo $_POST['customer_phone'] ?></li>
+        </ul>
+    </div>
+</div>
+        <p class="container text-center">
+            <a href="./index.php" class="btn btn-outline-primary">Go to the index page.</a>
+        </p>
 
 <?php
         include ("./includes/footer.php");
@@ -137,26 +176,30 @@ else{
     <form action="<?=$_SERVER['PHP_SELF'] ?>?parameter=<?=$_GET['parameter'] ?>" method="POST" name="order">
         <div class="row">
             <div class="col-md-6 mb-3">
-                    <label for="Name">Name</label>
+                    <label for="Name">Name *</label>
                     <input type="text" class="form-control" id="customer_name" name="customer_name" placeholder="Your name" value="" required>
             </div>
         </div>
         <div class="row">
             <div class="col-md-6 mb-3">
-                    <label for="Email">Email</label>
+                    <label for="Email">Email *</label>
                     <input type="email" class="form-control" id="customer_mail" name="customer_mail" placeholder="Your email" value="" required>
             </div>
         </div>
         <div class="row">
             <div class="col-md-6 mb-3">
-                    <label for="Phone number">Phone number</label>
-                    <input type="text" class="form-control bfh-phone" data-country="SV" id="customer_phone" name="customer_phone" placeholder="Your phone number" value="" required>
+                    <label for="Phone number">Phone number *</label>
+                    <input type="tel" pattern='^[0-9\-\+\s]*$' title='Only numbers (0-9), - sign, + sign and space are allowed.'
+                    class="form-control bfh-phone" data-country="SV" id="customer_phone" name="customer_phone" placeholder="Your phone number" value="" required>
             </div>
         </div>
         <div class="row">
             <div class="col-md-6 mb-3">
-                    <label for="Address">Delivery address</label>
+                    <label for="Address">Delivery address *</label>
                     <input type="address" class="form-control" id="customer_address" name="customer_address" placeholder="Your address" value="" required>
+                    <small id='passwordHelpBlock' class='form-text text-muted'>
+                            * All fields must be completed.
+                    </small>
             </div>
         </div>
         <div class="row">
@@ -168,6 +211,7 @@ else{
         <div class="row">
             <div class="col-md-6 mb-3">
                 <hr class="mb-4">
+                <input type='reset' value='Clear' class='btn btn-outline-primary'><br><br>
                 <button class="btn btn-primary btn-lg btn-block" type="submit">Place the order</button>
             </div>
         </div>
@@ -175,7 +219,7 @@ else{
     </form>
 
 <?php
-} // end else for the case in which no GET errors are found ->display the ordered product's details.
+} // end else - for the case in which no GET errors are found ->display the ordered product's details.
 
 include ("./includes/footer.php");
 ?>
