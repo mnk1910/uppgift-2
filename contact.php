@@ -31,6 +31,10 @@ include ("./includes/header.php");
                 </a>
               </li>
             </ul>
+            <p>For those interested in using our products' API</p>
+            <ul>
+              <a href="http://localhost/UPPGIFT-2/api/products/" class="btn btn-outline-primary btn-default btn-lg">Products API</a>
+            </ul>
           </div>
         </div>
       </div>
