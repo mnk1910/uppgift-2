@@ -177,7 +177,7 @@ else{
         <div class="row">
             <div class="col-md-6 mb-3">
                     <label for="Name">Name *</label>
-                    <input type="text" class="form-control" id="customer_name" name="customer_name" placeholder="Your name" value="" required>
+                    <input type="text" class="form-control" id="customer_name" name="customer_name" placeholder="Your name" value="" maxlength="45" required>
             </div>
         </div>
         <div class="row">
