@@ -40,8 +40,8 @@ while($products = mysqli_fetch_assoc($sql_products)){
   echo '  <div class="card">' . "\n";
   echo '    <img class="card-img-top" src="./images/' . $products["image"] . '" alt="' . $products["name"] . '">' . "\n";
   echo '    <div class="card-body">' . "\n";
-  echo '      <h3 class="card-title">' . $products["name"] . '</h5>' . "\n";
-  echo '      <h5 class="card-title pricing-card-title">' . $products["price"] . '<small class="text-muted"> kr</small></h1>' . "\n";
+  echo '      <h3 class="card-title">' . $products["name"] . '</h3>' . "\n";
+  echo '      <h5 class="card-title pricing-card-title">' . $products["price"] . '<small class="text-muted"> kr</small></h5>' . "\n";
   echo '      <p class="card-text">' . $products["description"] . '</p>' . "\n";
   echo '      <a href="order.php?parameter=' . $parameter . '" class="btn btn-primary">Order</a>' . "\n";
   echo '    </div>' . "\n";
