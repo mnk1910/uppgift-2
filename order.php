@@ -71,7 +71,7 @@ if ($error_post){
           $product_price = $parameters['price'];
 
           // Log the order details into order_log MySQL table as requested for VG
-          $query_order_log = "INSERT INTO order_log SET product_id='" . $product_id . "', customer_name='" . $_POST['customer_name'] . "', customer_mail='" . $_POST['customer_mail'] . "', customer_phone='" . $_POST['customer_phone'] . "', customer_address='" . $_POST['customer_address'] . "'";
+          $query_order_log = "INSERT INTO order_log SET product_id='" . htmlspecialchars($product_id) . "', customer_name='" . htmlspecialchars($_POST['customer_name']) . "', customer_mail='" . htmlspecialchars($_POST['customer_mail']) . "', customer_phone='" . htmlspecialchars($_POST['customer_phone']) . "', customer_address='" . htmlspecialchars($_POST['customer_address']) . "'";
           // check the generated SQL INSERT query
           // echo $query_order_log;
           $sql_order_log = mysqli_query($connection, $query_order_log);
